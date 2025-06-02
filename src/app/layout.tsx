@@ -9,6 +9,10 @@ const openSans = Open_Sans({
   weight: ['300', '400', '500', '600', '700', '800'],
 })
 
+export const metadata = {
+  title: 'JM Arsip',
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
