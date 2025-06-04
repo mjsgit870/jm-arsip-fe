@@ -29,6 +29,11 @@
   }
 }
 
+.active {
+  background-color: var(--mantine-color-blue-light); /* atau warna lain yang sesuai */
+  color: var(--mantine-color-blue-filled);
+}
+
 .chevron {
   transition: transform 200ms ease;
 }
