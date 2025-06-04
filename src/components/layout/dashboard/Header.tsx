@@ -1,4 +1,4 @@
-import { Group, ActionIcon, Anchor, Menu, Avatar, Text } from "@mantine/core";
+import { Group, ActionIcon, Anchor, Menu, Avatar, Text, Tooltip } from "@mantine/core";
 import { IconMenu2, IconQuestionMark, IconBellFilled, IconUserCircle, IconLogout } from "@tabler/icons-react";
 
 interface IHeaderProps {
@@ -10,10 +10,10 @@ export default function Header({ mobileToggle, desktopToggle }: IHeaderProps) {
   return (
     <Group h="100%" px="md" justify="space-between">
       <Group>
-        <ActionIcon variant="transparent" onClick={desktopToggle} visibleFrom="sm" size="sm">
+        <ActionIcon variant="transparent" onClick={desktopToggle} visibleFrom="sm">
           <IconMenu2 size={18} />
         </ActionIcon>
-        <ActionIcon variant="transparent" onClick={mobileToggle} hiddenFrom="sm" size="sm">
+        <ActionIcon variant="transparent" onClick={mobileToggle} hiddenFrom="sm">
           <IconMenu2 size={18} />
         </ActionIcon>
       </Group>
@@ -21,12 +21,16 @@ export default function Header({ mobileToggle, desktopToggle }: IHeaderProps) {
         <Anchor href="http://frontend-nota-dinas-mitreka.apps.ocdev.jasamarga.co.id/helpdesk" target="_blank" fz="sm">
           Helpdesk
         </Anchor>
-        <ActionIcon variant="transparent" size="sm">
-          <IconQuestionMark size={18} />
-        </ActionIcon>
-        <ActionIcon variant="transparent" size="sm">
-          <IconBellFilled size={18} />
-        </ActionIcon>
+        <Tooltip label="Faq">
+          <ActionIcon variant="transparent">
+            <IconQuestionMark size={18} />
+          </ActionIcon>
+        </Tooltip>
+        <Tooltip label="Notifikasi">
+          <ActionIcon variant="transparent">
+            <IconBellFilled size={18} />
+          </ActionIcon>
+        </Tooltip>
         <Menu shadow="xl" width={200} position="bottom-end" offset={15} withArrow>
           <Menu.Target>
             <Group gap="xs" style={{ cursor: 'pointer' }}>

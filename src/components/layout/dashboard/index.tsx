@@ -1,8 +1,8 @@
 'use client'
 
-import { AppShell, Button, Divider, Image, Menu, ScrollArea, useMantineTheme } from "@mantine/core"
+import { ActionIcon, AppShell, Box, Button, Divider, Group, Image, Menu, ScrollArea, useMantineTheme } from "@mantine/core"
 import { useDisclosure } from "@mantine/hooks"
-import { IconChevronUp, IconUserCircle } from "@tabler/icons-react"
+import { IconChevronUp, IconMenu2, IconUserCircle } from "@tabler/icons-react"
 import Header from "./Header"
 import { Sidebar } from "./Sidebar"
 
@@ -28,14 +28,23 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       </AppShell.Header>
 
       <AppShell.Navbar>
-        <AppShell.Section p="sm">
-          <Image 
-            src="http://frontend-nota-dinas-mitreka.apps.ocdev.jasamarga.co.id/img/brand/logo.png" 
-            alt="Logo Mitreka"
-          />
+        <AppShell.Section p="sm" h={59}> {/* 59 beacue header is inner border bottom, so we need decrease 1 in this section */} 
+          <Group h="100%" justify="space-between">
+            <Box h="100%">
+              <Image 
+                src="http://frontend-nota-dinas-mitreka.apps.ocdev.jasamarga.co.id/img/brand/logo.png" 
+                alt="Logo Mitreka"
+                fit="contain"
+                h="100%"
+              />
+            </Box>
+            <ActionIcon variant="transparent" onClick={mobileToggle} hiddenFrom="sm">
+              <IconMenu2 size={18} />
+            </ActionIcon>
+          </Group>
         </AppShell.Section>
 
-        <Divider />
+        <Divider  />
         
         <AppShell.Section grow component={ScrollArea}>
           <Sidebar />
