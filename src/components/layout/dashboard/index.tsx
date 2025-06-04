@@ -1,8 +1,9 @@
 'use client'
 
-import { ActionIcon, Anchor, AppShell, Avatar, Button, Divider, Group, Image, Menu, ScrollArea, Text, useMantineTheme } from "@mantine/core"
+import { AppShell, Button, Divider, Image, Menu, ScrollArea, useMantineTheme } from "@mantine/core"
 import { useDisclosure } from "@mantine/hooks"
-import { IconBellFilled, IconChevronUp, IconLogout, IconMenu2, IconQuestionMark, IconUserCircle } from "@tabler/icons-react"
+import { IconChevronUp, IconUserCircle } from "@tabler/icons-react"
+import Header from "./Header"
 import { Sidebar } from "./Sidebar"
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
@@ -23,40 +24,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       padding="md"
     >
       <AppShell.Header>
-        <Group h="100%" px="md" justify="space-between">
-          <Group>
-            <ActionIcon variant="transparent" onClick={desktopToggle} visibleFrom="sm">
-              <IconMenu2 />
-            </ActionIcon>
-            <ActionIcon variant="transparent" onClick={mobileToggle} hiddenFrom="sm">
-              <IconMenu2 />
-            </ActionIcon>
-          </Group>
-          <Group>
-            <Anchor href="http://frontend-nota-dinas-mitreka.apps.ocdev.jasamarga.co.id/helpdesk" target="_blank">
-              Helpdesk
-            </Anchor>
-            <ActionIcon variant="transparent">
-              <IconQuestionMark />
-            </ActionIcon>
-            <ActionIcon variant="transparent">
-              <IconBellFilled />
-            </ActionIcon>
-            <Menu shadow="xl" width={200} position="bottom-end" offset={15} withArrow>
-              <Menu.Target>
-                <Group gap="xs" style={{ cursor: 'pointer' }}>
-                  <Avatar src="https://ui-avatars.com/api/?name=Admin" />
-                  <Text>Admin</Text>
-                </Group>
-              </Menu.Target>
-
-              <Menu.Dropdown>
-                <Menu.Item leftSection={<IconUserCircle size={18} />}>Lihat Profil</Menu.Item>
-                <Menu.Item leftSection={<IconLogout size={18} />} color="red">Keluar</Menu.Item>
-              </Menu.Dropdown>
-            </Menu>
-          </Group>
-        </Group>
+        <Header mobileToggle={mobileToggle} desktopToggle={desktopToggle} />
       </AppShell.Header>
 
       <AppShell.Navbar>
@@ -80,8 +48,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <Menu.Target>
               <Button
                 fullWidth
-                leftSection={<IconUserCircle />}
-                rightSection={<IconChevronUp />}
+                leftSection={<IconUserCircle size={18} />}
+                rightSection={<IconChevronUp size={18} />}
               >
                 IT Support & Services Assistant
               </Button>
