@@ -13,8 +13,8 @@ import classes from './Sidebar.module.css'
 import { LinksGroup } from './SidebarLinksGroup'
 
 const mockdata = [
-  { label: 'Pencarian Arsip', icon: IconSearch },
-  { label: 'Dashboard', icon: IconDashboard },
+  { label: 'Pencarian Arsip', icon: IconSearch, href: '/search' },
+  { label: 'Dashboard', icon: IconDashboard, href: '/dashboard' },
   {
     label: 'Naskah Dinas',
     icon: IconFile,
