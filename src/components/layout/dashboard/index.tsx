@@ -33,7 +33,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <Box h="100%">
               <Image 
                 src="http://frontend-nota-dinas-mitreka.apps.ocdev.jasamarga.co.id/img/brand/logo.png" 
-                alt="Logo Mitreka"
+                alt="Logo Jasamarga"
                 fit="contain"
                 h="100%"
               />
