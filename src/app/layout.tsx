@@ -4,7 +4,9 @@ import Provider from '@/components/Provider'
 import { ColorSchemeScript, mantineHtmlProps } from '@mantine/core'
 import { Geist } from 'next/font/google'
 
-const geist = Geist()
+const geist = Geist({
+  subsets: ['latin']
+})
 
 export const metadata = {
   title: 'JM Arsip',
