@@ -7,24 +7,24 @@ interface ITextInputProps<T extends FieldValues> {
   control: Control<T>
   label: string
   name: FieldPath<T>
-  inputWrapper?: InputWrapperProps
-  input?: InputProps
+  inputWrapperProps?: InputWrapperProps
+  inputProps?: InputProps
 }
 
 export default function TextInput<T extends FieldValues>({
   control,
   label,
   name,
-  inputWrapper,
-  input,
+  inputWrapperProps,
+  inputProps,
 }: ITextInputProps<T>) {
   return (
     <Controller
       name={name}
       control={control}
       render={({ field, fieldState: { error } }) => (
-        <Input.Wrapper label={label} error={error?.message} {...inputWrapper}>
-          <Input {...field} {...input} />
+        <Input.Wrapper label={label} error={error?.message} {...inputWrapperProps}>
+          <Input {...field} {...inputProps} />
         </Input.Wrapper>
       )}
     />

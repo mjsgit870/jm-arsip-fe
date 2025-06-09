@@ -43,8 +43,7 @@ export default function LoginPage() {
             <Image 
               src="http://frontend-nota-dinas-mitreka.apps.ocdev.jasamarga.co.id/img/brand/logo.png" 
               alt="Logo Jasamarga" 
-              h={50}
-              w="auto"
+              style={{ height: 50, width: "auto" }}
             />
             <Title tt="uppercase" order={3}>Jasamarga Digital Arsip</Title>
             <Text>Silahkan Masuk</Text>
@@ -54,22 +53,21 @@ export default function LoginPage() {
               control={control} 
               name="username" 
               label="Username" 
-              input={{ 
-                size: "lg",
-                leftSection: <IconUser size={18} />
-              }} 
+              inputProps={{ size: "lg", leftSection: <IconUser size={18} /> }} 
             />
             <PasswordInput 
               control={control} 
               name="password" 
               label="Password" 
-              input={{ 
-                size: "lg",
-                leftSection: <IconKey size={18} />
-              }} 
+              inputProps={{ size: "lg", leftSection: <IconKey size={18} /> }} 
             />
 
-            <CheckboxInput control={control} name="remember" label="Ingat saya" input={{ my: "sm" }} />
+            <CheckboxInput 
+              control={control} 
+              name="remember" 
+              label="Ingat saya" 
+              inputProps={{ my: "sm" }} 
+            />
 
             <Button type="submit" size="lg" loading={loading}>Login</Button>
           </Flex>

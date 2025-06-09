@@ -12,24 +12,24 @@ interface IPasswordInputProps<T extends FieldValues> {
   control: Control<T>
   label: string
   name: FieldPath<T>
-  inputWrapper?: InputWrapperProps
-  input?: PasswordInputProps
+  inputWrapperProps?: InputWrapperProps
+  inputProps?: PasswordInputProps
 }
 
 export default function PasswordInput<T extends FieldValues>({
   control,
   label,
   name,
-  inputWrapper,
-  input,
+  inputWrapperProps,
+  inputProps,
 }: IPasswordInputProps<T>) {
   return (
     <Controller
       name={name}
       control={control}
       render={({ field, fieldState: { error } }) => (
-        <Input.Wrapper label={label} error={error?.message} {...inputWrapper}>
-          <MantinePasswordInput {...field} {...input} />
+        <Input.Wrapper label={label} error={error?.message} {...inputWrapperProps}>
+          <MantinePasswordInput {...field} {...inputProps} />
         </Input.Wrapper>
       )}
     />
