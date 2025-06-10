@@ -32,7 +32,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <Group h="100%" justify="space-between">
             <Box h="100%">
               <Image 
-                src="http://frontend-nota-dinas-mitreka.apps.ocdev.jasamarga.co.id/img/brand/logo.png" 
+                src="/logo-jasamarga.png" 
                 alt="Logo Jasamarga"
                 fit="contain"
                 h="100%"
