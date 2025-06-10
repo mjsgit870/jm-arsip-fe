@@ -5,12 +5,14 @@ import { useDisclosure } from "@mantine/hooks"
 import { IconChevronUp, IconMenu2, IconUserCircle } from "@tabler/icons-react"
 import Header from "./Header"
 import { Sidebar } from "./Sidebar"
+import { useSession } from "next-auth/react"
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const [mobileOpened, { toggle: mobileToggle }] = useDisclosure()
   const [desktopOpened, { toggle: desktopToggle }] = useDisclosure(true)
 
   const theme = useMantineTheme()
+  const { data: session } = useSession()
 
   return (
     <AppShell
@@ -60,13 +62,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 leftSection={<IconUserCircle size={18} />}
                 rightSection={<IconChevronUp size={18} />}
               >
-                IT Support & Services Assistant
+                {session?.user.jabatan}
               </Button>
             </Menu.Target>
 
             <Menu.Dropdown>
               <Menu.Label>Jabatan</Menu.Label>
-              <Menu.Item style={{ backgroundColor: theme.colors.blue[0] }}>IT Support & Services Assistant</Menu.Item>
+              <Menu.Item style={{ backgroundColor: theme.colors.blue[0] }}>{session?.user.jabatan}</Menu.Item>
             </Menu.Dropdown>
           </Menu>
         </AppShell.Section>
