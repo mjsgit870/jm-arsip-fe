@@ -1,6 +1,7 @@
 import { ActionIcon, Anchor, Avatar, Group, Menu, Text, Tooltip } from "@mantine/core";
 import { IconBellFilled, IconLogout, IconMenu2, IconQuestionMark, IconUserCircle } from "@tabler/icons-react";
 import { signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 interface IHeaderProps {
   mobileToggle: () => void;
@@ -8,8 +9,10 @@ interface IHeaderProps {
 }
 
 export default function Header({ mobileToggle, desktopToggle }: IHeaderProps) {
+  const router = useRouter()
   const handleLogout = async () => {
-    await signOut()
+    await signOut({ redirect: false })
+    router.push("/login")
   }
 
   return (
