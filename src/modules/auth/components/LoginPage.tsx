@@ -5,11 +5,13 @@ import PasswordInput from "@/components/shared/password-input";
 import TextInput from "@/components/shared/text-input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Box, Button, Flex, Image, Text, Title } from "@mantine/core";
+import { notifications } from "@mantine/notifications";
+import { IconKey, IconUser } from "@tabler/icons-react";
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ILoginForm, loginSchema } from "../schemas/authSchema";
-import { IconKey, IconUser } from "@tabler/icons-react";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -25,13 +27,20 @@ export default function LoginPage() {
     }
   });
 
-  const onSubmit: SubmitHandler<ILoginForm> = (data) => {
-    console.log(data)
+  const onSubmit: SubmitHandler<ILoginForm> = async (data) => {
     setLoading(true)
-    setTimeout(() => {
+
+    const res = await signIn("credentials", { redirect: false, ...data })
+
+    if (res?.error) {
+      notifications.show({ title: "Error", message: "Login Gagal", color: "red" })
       setLoading(false)
-      router.push("/dashboard");
-    }, 2000);
+      return
+    }
+
+    notifications.show({ title: "Success", message: "Login Berhasil", color: "green" })
+    setLoading(false)
+    router.push("/dashboard")
   }
 
   return (
