@@ -1,5 +1,6 @@
-import { Group, ActionIcon, Anchor, Menu, Avatar, Text, Tooltip } from "@mantine/core";
-import { IconMenu2, IconQuestionMark, IconBellFilled, IconUserCircle, IconLogout } from "@tabler/icons-react";
+import { ActionIcon, Anchor, Avatar, Group, Menu, Text, Tooltip } from "@mantine/core";
+import { IconBellFilled, IconLogout, IconMenu2, IconQuestionMark, IconUserCircle } from "@tabler/icons-react";
+import { signOut } from "next-auth/react";
 
 interface IHeaderProps {
   mobileToggle: () => void;
@@ -7,6 +8,10 @@ interface IHeaderProps {
 }
 
 export default function Header({ mobileToggle, desktopToggle }: IHeaderProps) {
+  const handleLogout = async () => {
+    await signOut()
+  }
+
   return (
     <Group h="100%" px="md" justify="space-between">
       <Group>
@@ -41,7 +46,7 @@ export default function Header({ mobileToggle, desktopToggle }: IHeaderProps) {
 
           <Menu.Dropdown>
             <Menu.Item leftSection={<IconUserCircle size={18} />}>Lihat Profil</Menu.Item>
-            <Menu.Item leftSection={<IconLogout size={18} />} color="red">Keluar</Menu.Item>
+            <Menu.Item leftSection={<IconLogout size={18} />} color="red" onClick={handleLogout}>Keluar</Menu.Item>
           </Menu.Dropdown>
         </Menu>
       </Group>
