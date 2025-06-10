@@ -2,7 +2,9 @@
 
 import mantineTheme from "@/config/mantineTheme"
 import { MantineProvider } from "@mantine/core"
+import { Notifications } from "@mantine/notifications"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { SessionProvider } from "next-auth/react"
 import { useState } from "react"
 
 export default function Provider({ children }: { children: React.ReactNode }) {
@@ -11,7 +13,10 @@ export default function Provider({ children }: { children: React.ReactNode }) {
   return (
     <MantineProvider theme={mantineTheme}>
       <QueryClientProvider client={queryClient}>
-        {children}
+        <SessionProvider>
+          <Notifications position="top-center" />
+          {children}
+        </SessionProvider>
       </QueryClientProvider>
     </MantineProvider>
   )
